@@ -1,0 +1,26 @@
+#header{
+    display: flex;
+    background-color: #9E7C8C;
+    width: 100%;
+    height: 65px;
+    justify-content: center;
+    align-items:flex-end;
+}
+#letras{
+    width: 290px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    background-color: #9E7C8C;
+}
+#logOutB{
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+#logout{
+    display: flex;
+    justify-content: flex-end;
+}
+
