@@ -1,15 +1,33 @@
 import './Home.css';
 import {useAuth} from  './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { saveNote} from './firebase.js';
+import { saveNote, getNotes} from './firebase.js';
 
 //imagenes
 import catlogo from './imagenes/catlogo.png';
 import letras from './imagenes/letras.png';
 import logoutB from './imagenes/logout.png';
 
+//Obtener datos de Firestore
+const NotesContainer = document.getElementById('noteContainer');
+
+window.addEventListener('DOMContentLoaded', async() =>{
+  const querySnapshot = await getNotes()
+  var html =" ";
+
+  querySnapshot.forEach(doc => {
+    const note = doc.data()
+    html +=`
+    <div> 
+    <h3>${note.Title}</h3>
+    <p>${note.Decription}<p>
+    </div>
+    `
+  })
+  NotesContainer.dangerouslySetInnerHTML = html
+})
+
 export default function Home() {
-    
 
    const {logout}=useAuth()
    const navigate = useNavigate();
@@ -19,7 +37,7 @@ export default function Home() {
      navigate("/")
    };
 
-   const noteForm = document.getElementById('imputNotes')
+   const noteForm = document.getElementById('imputNotesForm')
     function handleSubmit(e) {
       e.preventDefault();
 
@@ -41,13 +59,15 @@ export default function Home() {
       </section>
        
      <section id="imputNoteSec">
-     <form id="imputNotes">
+     <form id="imputNotesForm">
          <input type="text" placeholder='Title'id="Title"></input>
          <input type="text" placeholder='Note'id="Description"></input>
-         <button onClick={handleSubmit}>Save</button>
+         <button id="saveNoteB"onClick={handleSubmit}>Save</button>
        </form>
      </section>
       
+      <section id="noteContainer">
+      </section>
       
       
       <section id="foter">

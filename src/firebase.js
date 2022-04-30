@@ -1,10 +1,9 @@
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs,  } from "firebase/firestore";
-import { addDoc,  } from "firebase/firestore";
+import { collection, getDocs, addDoc  } from "firebase/firestore";
+
 //import { collection, addDoc} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,4 +28,4 @@ const db = getFirestore()
 export const saveNote =(Title, Description) => 
   addDoc(collection(db,'Notes'), {Title, Description})
 
-  export const getNotes = () => getDocs(collection(db,"Title", "Description"));
+  export const getNotes = () => getDocs(collection(db,"Notes"));

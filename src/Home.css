@@ -24,3 +24,44 @@
     justify-content: flex-end;
 }
 
+
+#imputNotesForm{
+    
+    background-color: #D7BC9E;
+    height: 170px;
+    width: 165px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+::placeholder{
+ position: absolute;
+ top: 0;
+ left: 60px;
+}
+
+#Title{
+    background-color: #D7BC9E;
+    height: 20px;
+    width: 160px;
+    border-radius: 5px;
+    border:none;
+    text-align: center;
+}
+
+#Description{
+    background-color: #D7BC9E;
+    height: 110px;
+    width: 160px;
+    border-radius: 5px;
+    border:none;
+}
+
+#saveNoteB{
+    width: 50px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    margin: auto 50px;
+    background-color: #0994D5;
+}
