@@ -3,7 +3,8 @@ import React, {useEffect, useState} from "react";
 import {useAuth} from  './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { saveNote, db } from './firebase.js';
-import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, } from "firebase/firestore";
+
 //imagenes
 import catlogo from './imagenes/catlogo.png';
 import letras from './imagenes/letras.png';
@@ -12,19 +13,23 @@ import deleteB from './imagenes/eliminar.png';
 import editB from './imagenes/editar.png';
 
 export default function Home() {
-  const [note, setNote]= useState([]);
-  const docRef = collection(db, "Notes");
 
   //Imprimir notas
-
-   useEffect(() =>{
-     const printNotes =async () =>{
-       const data = await getDocs(docRef);
-       setNote(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
-  };
-  printNotes();
-   });
-
+  const [ note, setNote] = useState([]);
+  
+  const printNote = async () => {
+      onSnapshot(collection( db, 'Notes'), (QuerySnapshot) => {
+          const notas = []
+          QuerySnapshot.forEach(doc =>{
+              notas.push({ ...doc.data(), id: doc.id})
+          })
+          setNote(notas)
+      })
+  }
+  useEffect(()=> {
+      printNote()
+  },[])
+  
   //Autentificación 
 
    const {logout}=useAuth()
@@ -87,8 +92,6 @@ export default function Home() {
            </section>);
         })}
 
-      
-        
      
      </section>
       
@@ -100,4 +103,4 @@ export default function Home() {
        
     </div>
   );
-}
+  }
