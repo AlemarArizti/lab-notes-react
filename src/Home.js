@@ -1,33 +1,31 @@
 import './Home.css';
+import React, {useEffect, useState} from "react";
 import {useAuth} from  './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { saveNote, getNotes} from './firebase.js';
-
+import { saveNote, db } from './firebase.js';
+import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
 //imagenes
 import catlogo from './imagenes/catlogo.png';
 import letras from './imagenes/letras.png';
 import logoutB from './imagenes/logout.png';
-
-//Obtener datos de Firestore
-const NotesContainer = document.getElementById('noteContainer');
-
-window.addEventListener('DOMContentLoaded', async() =>{
-  const querySnapshot = await getNotes()
-  var html =" ";
-
-  querySnapshot.forEach(doc => {
-    const note = doc.data()
-    html +=`
-    <div> 
-    <h3>${note.Title}</h3>
-    <p>${note.Decription}<p>
-    </div>
-    `
-  })
-  NotesContainer.dangerouslySetInnerHTML = html
-})
+import deleteB from './imagenes/eliminar.png';
+import editB from './imagenes/editar.png';
 
 export default function Home() {
+  const [note, setNote]= useState([]);
+  const docRef = collection(db, "Notes");
+
+  //Imprimir notas
+
+   useEffect(() =>{
+     const printNotes =async () =>{
+       const data = await getDocs(docRef);
+       setNote(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
+  };
+  printNotes();
+   });
+
+  //Autentificación 
 
    const {logout}=useAuth()
    const navigate = useNavigate();
@@ -37,6 +35,7 @@ export default function Home() {
      navigate("/")
    };
 
+   //Guardar texto de notas
    const noteForm = document.getElementById('imputNotesForm')
     function handleSubmit(e) {
       e.preventDefault();
@@ -45,9 +44,18 @@ export default function Home() {
       const description= noteForm['Description'];
 
     saveNote(title.value, description.value)
-
     noteForm.reset();
     }
+
+    //Borrar Notas
+
+    const deleteNote = async (id) =>{
+      const noteDoc = doc(db, "Notes", id )
+      await deleteDoc(noteDoc);
+    }
+
+    //Editar notas
+    
   
   return (
     <div className="Home">
@@ -58,6 +66,8 @@ export default function Home() {
       <img src={logoutB} alt="logOutB" id="logOutB" onClick={handleLogout}></img>
       </section>
        
+     <section id="saveAndNotes">
+
      <section id="imputNoteSec">
      <form id="imputNotesForm">
          <input type="text" placeholder='Title'id="Title"></input>
@@ -66,8 +76,21 @@ export default function Home() {
        </form>
      </section>
       
-      <section id="noteContainer">
-      </section>
+     {note.map((note)=>{
+         return (<section className="noteContainer">
+           
+           <h3 className="noteTitle"> {note.Title}</h3>          
+           <p className="noteDescription"> {note.Description}</p>
+           <img src={deleteB} alt="Delete" id="delete" onClick={() =>deleteNote(note.id)}></img>
+           <img src={editB} alt="Edit" id="edit"></img>
+         
+           </section>);
+        })}
+
+      
+        
+     
+     </section>
       
       
       <section id="foter">
