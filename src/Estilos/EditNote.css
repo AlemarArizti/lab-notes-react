@@ -1,0 +1,50 @@
+.editContainer{
+    background-color: #D7BC9E;
+    height: 140px;
+    width: 365px;
+    border-radius: 5px;
+    margin: 55px 5px 0 5px;
+}
+
+.noteEdit{
+    background-color: #D7BC9E;
+    height: 70px;
+    width: 355px;
+    border: none;
+    
+}
+
+.titleEdit{
+    background-color: #D7BC9E;
+    height: 20px;
+    width: 355px;
+    border: none;
+}
+
+#editBS{
+    display:flex;
+    background-color: #D7BC9E;
+    height: 20px;
+    width: 363px;
+    justify-content: center;
+}
+
+.saveB{
+    background-color: #0994D5;
+    border:none;
+    border-radius:15px;
+    height:20px;
+    width:80px;
+    color:white;
+    margin: 10px;
+}
+
+.cancel{
+    background-color: red;
+    border:none;
+    border-radius:15px;
+    height:20px;
+    width:80px;
+    color:white;
+    margin: 10px; 
+}

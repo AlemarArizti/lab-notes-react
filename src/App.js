@@ -7,7 +7,7 @@ import {AuthProvider} from "./context/AuthContext";
 import SignIn from './SignIn';
 import Home from './Home';
 import Welcome from './Welcome';
-
+import EditNote from './Funciones/EditNote'
 
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
     <Route path="/" element={ <Welcome/> }/>
     <Route path="/SignIn" element={<SignIn/>} />
     <Route path="/Home" element={<Home/>} />
+    <Route path="/EditNote/:id" element={<EditNote/>} />
+ 
     </Routes>
 </AuthProvider>
  </div>    

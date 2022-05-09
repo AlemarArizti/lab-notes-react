@@ -1,18 +1,31 @@
-import './Home.css';
+import './Estilos/Home.css';
 import React, {useEffect, useState} from "react";
 import {useAuth} from  './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { saveNote, db } from './firebase.js';
-import { collection, deleteDoc, doc, onSnapshot, } from "firebase/firestore";
+import { db, saveNote } from './firebase.js';
+import { collection, onSnapshot } from "firebase/firestore";
+import {deleteNote} from "./Funciones/Delete"
 
 //imagenes
-import catlogo from './imagenes/catlogo.png';
 import letras from './imagenes/letras.png';
 import logoutB from './imagenes/logout.png';
 import deleteB from './imagenes/eliminar.png';
 import editB from './imagenes/editar.png';
 
+
 export default function Home() {
+
+  //Guardar texto de notas
+  const noteForm = document.getElementById('imputNotesForm')
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const title = noteForm['Title'];
+    const description= noteForm['Description'];
+
+  saveNote(title.value, description.value)
+  noteForm.reset();
+  }
 
   //Imprimir notas
   const [ note, setNote] = useState([]);
@@ -36,31 +49,10 @@ export default function Home() {
    const navigate = useNavigate();
 
    const handleLogout = async() =>{
-     await logout()
+     await logout() 
      navigate("/")
    };
 
-   //Guardar texto de notas
-   const noteForm = document.getElementById('imputNotesForm')
-    function handleSubmit(e) {
-      e.preventDefault();
-
-      const title = noteForm['Title'];
-      const description= noteForm['Description'];
-
-    saveNote(title.value, description.value)
-    noteForm.reset();
-    }
-
-    //Borrar Notas
-
-    const deleteNote = async (id) =>{
-      const noteDoc = doc(db, "Notes", id )
-      await deleteDoc(noteDoc);
-    }
-
-    //Editar notas
-    
   
   return (
     <div className="Home">
@@ -71,36 +63,30 @@ export default function Home() {
       <img src={logoutB} alt="logOutB" id="logOutB" onClick={handleLogout}></img>
       </section>
        
-     <section id="saveAndNotes">
 
-     <section id="imputNoteSec">
+      <section id="imputNoteSec">
      <form id="imputNotesForm">
          <input type="text" placeholder='Title'id="Title"></input>
          <input type="text" placeholder='Note'id="Description"></input>
          <button id="saveNoteB"onClick={handleSubmit}>Save</button>
+         
        </form>
      </section>
+ 
+     <section id="NotesSec">
       
      {note.map((note)=>{
          return (<section className="noteContainer">
            
-           <h3 className="noteTitle"> {note.Title}</h3>          
-           <p className="noteDescription"> {note.Description}</p>
+           <div className="noteTitle"><h3 className="noteTitle"> {note.Title}</h3></div>     
+           <div className="noteDescription"> {note.Description}</div>
+           
            <img src={deleteB} alt="Delete" id="delete" onClick={() =>deleteNote(note.id)}></img>
-           <img src={editB} alt="Edit" id="edit"></img>
-         
+           <img src={editB} alt="Edit" id="edit" onClick={() => navigate(`/EditNote/${note.id}`)}></img>
            </section>);
         })}
-
-     
      </section>
-      
-      
-      <section id="foter">
-         <p id="copy">&copy;CopyRight Alemar Arizti</p>
-         <img src={catlogo} alt="catLogo" id="catlogo"></img>
-        </section>
-       
+  
     </div>
   );
   }

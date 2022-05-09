@@ -24,29 +24,30 @@
     justify-content: flex-end;
 }
 
-
+#imputNoteSec{
+    display: flex;
+    justify-content:center; 
+}
 
 
 #imputNotesForm{
-    
     background-color: #D7BC9E;
     height: 170px;
-    width: 165px;
+    width: 355px;
     border-radius: 5px;
     margin: 5px;
 }
 
 ::placeholder{
  position: absolute;
-
  top: 0;
- left: 60px;
+ left: 180px;
 }
 
 #Title{
     background-color: #D7BC9E;
     height: 20px;
-    width: 160px;
+    width: 350px;
     border-radius: 5px;
     border:none;
     text-align: center;
@@ -55,7 +56,7 @@
 #Description{
     background-color: #D7BC9E;
     height: 110px;
-    width: 160px;
+    width: 350px;
     border-radius: 5px;
     border:none;
 }
@@ -67,29 +68,55 @@
     border: none;
     margin: auto 50px;
     background-color: #0994D5;
+    position: absolute;
+    top: 238px;
+    left: 120px;
+}
+
+#NotesSec{
+    display:grid;
+    grid-template-columns: auto auto ;
+    row-gap: 10px;
+    grid-auto-rows:auto;
+    padding: 10px;
 }
 
 .noteContainer{
-    background-color: #BC6633;
-    height: 170px;
-    width: 165px;
+    background-color: #D7BC9E;
+    width: 150px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 2px 5px 0 10px;
+    
 }
 
 .noteTitle{
-    background-color: #BC6633;
-    border-radius: 5px;
+    background-color: #D7BC9E; 
     text-align: center;
-}
-.noteDescription{
-    background-color: #BC6633;
-    padding: 4px;
+    margin: 10px 0 8px 0;
     font-size: 15px;
 }
+.noteDescription{
+    background-color: #D7BC9E;
+    padding: 4px;
+    text-align: center;
+    font-size: 13px;
+}
+
 
 #delete, #edit{
-    background-color: #BC6633;
+    background-color: #D7BC9E;
+    height: 20px;
+    width: 20px;
+    margin: 8px 30px 0 20px;
+}
+
+#delete{
+    height: 22px;
+}
+
+#add{
     height: 20px;
     width: 20px;
 }
+
+
