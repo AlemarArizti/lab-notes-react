@@ -53,6 +53,16 @@ export default function Home() {
      navigate("/")
    };
 
+ //Edit
+
+  const edit = (note) =>{
+
+    const titleEdit = document.getElementById("noteTitle")//.value = note.Title 
+    const descriptionEdit = document.getElementById("noteDescription")//.value = note.Description
+    navigate(`/EditNote/${note.id}`)
+    console.log(titleEdit, descriptionEdit);
+  }
+
   
   return (
     <div className="Home">
@@ -66,23 +76,25 @@ export default function Home() {
 
       <section id="imputNoteSec">
      <form id="imputNotesForm">
-         <input type="text" placeholder='Title'id="Title"></input>
-         <input type="text" placeholder='Note'id="Description"></input>
-         <button id="saveNoteB"onClick={handleSubmit}>Save</button>
-         
+         <input type="text" placeholder='Title' id="Title"></input>
+         <input type="text" placeholder='Note' id="Description"></input> 
+         <section id="saveNoteBSec">
+       <button id="saveNoteB"onClick={handleSubmit}>Save</button>
+       </section>
        </form>
+       
      </section>
  
      <section id="NotesSec">
       
      {note.map((note)=>{
-         return (<section className="noteContainer">
+         return (<section className="noteContainer" key={note.id}>
            
-           <div className="noteTitle"><h3 className="noteTitle"> {note.Title}</h3></div>     
-           <div className="noteDescription"> {note.Description}</div>
+           <div id="noteTitle" className="noteTitle"><h3 className="noteTitle"> {note.Title}</h3></div>     
+           <div id="noteDescription" className="noteDescription"> {note.Description}</div>
            
-           <img src={deleteB} alt="Delete" id="delete" onClick={() =>deleteNote(note.id)}></img>
-           <img src={editB} alt="Edit" id="edit" onClick={() => navigate(`/EditNote/${note.id}`)}></img>
+           <img src={deleteB} alt="Delete" id="delete" onClick={() => deleteNote(note.id)}></img>
+           <img src={editB} alt="Edit" id="edit" onClick={() => edit(note)}></img>       
            </section>);
         })}
      </section>

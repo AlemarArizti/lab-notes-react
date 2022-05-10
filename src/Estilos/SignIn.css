@@ -48,14 +48,42 @@
     margin: 10px;
   }
   
-  footer{
+  #cancelB{
+    background-color: red;
+    border:none;
+    border-radius:15px;
+    height:30px;
+    width:90px;
+    color:white;
+    margin: 10px; 
+}
+
+  /*Footer*/
+  #foter{
+    display:flex;
     background-color: black;
     width: 100%;
-    height: 30px;
+    height:35px;
     position: absolute;
     bottom: 0;
+    flex-direction:row ;
+    justify-content:center;
+  }
+  
+  #copy{
+    width:200px;
+    height: 18px;
+    background-color: black;
     color: white;
-    text-align: center;
+    margin:0px 0 0 60px;
+  }
+  
+  #catlogo{
+    height: 30px;
+    width: 30px;
+    margin: 0px 65px 0 0;
+    padding: 0;
+    background-color: black;
   }
 
   .errorSec{

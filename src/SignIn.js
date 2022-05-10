@@ -49,14 +49,15 @@ export default function SignIn() {
           {error && <p className="error">{error}</p>}
           </section>
       
-       <form id="inputSingIn" onSubmit={handleSubmit}>
+       <form id="inputSingIn">
        <input type="text" className="input" id="nameS" name="name" placeholder='Name' onChange={handleChange}></input>
        <input type="text" className="input" id="mailS" name="email" placeholder='E-mail' onChange={handleChange}></input>
-       <input type="password" className="input" id="passwordS" name="password" placeholder='Password' onChange={handleChange}></input>
-       <section id="buttonSect">
-       <button className="buttonHome" id="singIn">Sing In</button>
-       </section>
+       <input type="password" className="input" id="passwordS" name="password" placeholder='Password' onChange={handleChange}></input> 
        </form>
+       <section id="buttonSect">
+       <button className="buttonHome" id="singIn" onClick={handleSubmit}>Sing In</button>
+       <button id="cancelB" onClick={() => navigate("/")}>Cancelar </button>
+       </section>
        </section>
        
        <section id="foter">

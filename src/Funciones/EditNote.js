@@ -14,12 +14,12 @@ export default function EditNote() {
   const [updateTittle, setUpdateTittle] = useState("");
   const [updateDescription, setUpdateNote] = useState("");
 
-  const [note, setNote] = useState([]);
+  const [setNote] = useState([]);
 
   const getDoc = async () => {
     const docRef = collection(db, "Notes");
     const docS = await getDocs(docRef);
-    setNote(docS);
+    //setNote(docS);
   };
 
   const updateNotes = async (id, Title, Description) => {
@@ -43,9 +43,11 @@ export default function EditNote() {
       <img src={letras} alt="letras" id="letras"></img>
       </section>
       
-      <section className="editContainer">
+      <section id="editContainerSec" >
+        <section className="editContainer">
       {}
         <input
+          id= "editTitle"
           className="titleEdit"
           placeholder="Edit Title"
           onChange={(event) => {
@@ -53,16 +55,18 @@ export default function EditNote() {
           }}
         />
         <input
+          id= "editDescription"
           className="noteEdit"
           placeholder="Edite Note"
           onChange={(event) => {
             setUpdateNote(event.target.value);
           }}
         />
-        <section id="editBS">
+          <section id="editBS">
           <button className="saveB" onClick={() => {updateNotes(id); }} >Save</button>
           <button className="cancel" onClick={() => navigate("/Home")}>Cancelar </button>
-        </section>
+          </section>
+         </section>
         </section>
 
         <section id="foter">

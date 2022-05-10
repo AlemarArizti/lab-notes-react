@@ -54,16 +54,14 @@ function Welcome() {
           <section id="errorSec">
           {error && <p className="error">{error}</p>}
           </section>
-       <form id="inputSingIn" onSubmit={handleSubmit}>
+       <form id="inputSingIn" >
        <input type="text" className="input" id="mail" name="email" placeholder='E-mail' onChange={handleChange}></input>
        <input type="password" className="input" id="passwordLogin" name="password" placeholder='Password' onChange={handleChange}></input>
-       <section id="buttonSect">
-       <button className="buttonHome" id="login">Login</button>
-       </section>
        </form>
        </section>
- 
+
         <section id="buttonSect">
+        <button className="buttonHome" id="login"  onClick={handleSubmit}>Login</button>
         <button className="buttonHome" id="singIn" onClick={handleSignIn}>Sing In</button>
         </section>
  

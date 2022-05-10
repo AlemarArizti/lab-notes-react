@@ -1,31 +1,42 @@
+#editContainerSec{
+display: flex;
+justify-content:center;
+}
+
+
 .editContainer{
     background-color: #D7BC9E;
-    height: 140px;
-    width: 365px;
+    height: 250px;
+    width: 95%;
     border-radius: 5px;
     margin: 55px 5px 0 5px;
 }
 
 .noteEdit{
     background-color: #D7BC9E;
-    height: 70px;
-    width: 355px;
+    height: 65%;
+    width: 98%;
     border: none;
     
 }
 
 .titleEdit{
     background-color: #D7BC9E;
-    height: 20px;
-    width: 355px;
+    height: 15%;
+    width: 98%;
     border: none;
+}
+
+::placeholder{
+    text-align: center;
+    line-height: 50px;
 }
 
 #editBS{
     display:flex;
     background-color: #D7BC9E;
-    height: 20px;
-    width: 363px;
+    height: 10%;
+    width: 100%;
     justify-content: center;
 }
 
@@ -48,3 +59,30 @@
     color:white;
     margin: 10px; 
 }
+
+#foter{
+    display:flex;
+    background-color: black;
+    width: 100%;
+    height:35px;
+    position: absolute;
+    bottom: 0;
+    flex-direction:row ;
+    justify-content:center;
+  }
+  
+  #copy{
+    width:200px;
+    height: 18px;
+    background-color: black;
+    color: white;
+    margin:0px 0 0 60px;
+  }
+  
+  #catlogo{
+    height: 30px;
+    width: 30px;
+    margin: 0px 65px 0 0;
+    padding: 0;
+    background-color: black;
+  }

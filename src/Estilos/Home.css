@@ -24,11 +24,11 @@
     justify-content: flex-end;
 }
 
+/*Crear nota*/
 #imputNoteSec{
     display: flex;
     justify-content:center; 
 }
-
 
 #imputNotesForm{
     background-color: #D7BC9E;
@@ -39,9 +39,8 @@
 }
 
 ::placeholder{
- position: absolute;
- top: 0;
- left: 180px;
+    text-align: center;
+    /*line-height: 100px;*/
 }
 
 #Title{
@@ -61,6 +60,12 @@
     border:none;
 }
 
+#saveNoteBSec{
+    background-color: #D7BC9E;
+    display: flex;
+    justify-content: center;
+}
+
 #saveNoteB{
     width: 50px;
     height: 30px;
@@ -68,11 +73,10 @@
     border: none;
     margin: auto 50px;
     background-color: #0994D5;
-    position: absolute;
-    top: 238px;
-    left: 120px;
+    
 }
 
+/*Notas ya impresas*/
 #NotesSec{
     display:grid;
     grid-template-columns: auto auto ;
@@ -102,7 +106,7 @@
     font-size: 13px;
 }
 
-
+/*Botones de nota*/
 #delete, #edit{
     background-color: #D7BC9E;
     height: 20px;
@@ -114,9 +118,70 @@
     height: 22px;
 }
 
-#add{
-    height: 20px;
-    width: 20px;
-}
+/*Responsive*/
 
+@media(max-width: 340px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto ;
+    }
+  }
 
+@media(min-width: 500px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto;
+    }
+  }
+
+  @media(min-width: 650px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto;
+    }
+  }
+
+  @media(min-width: 910px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto;
+    }
+  }
+
+  @media(min-width: 1080px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto;
+    }
+  }
+  @media(min-width: 1250px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+    }
+  }
+
+  @media(min-width: 1480px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+    }
+  }
+  @media(min-width: 1600px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    }
+  }
+  @media(min-width: 1700px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    }
+  }
+  @media(min-width: 1800px){
+    #NotesSec{
+        display:grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+    }
+  }

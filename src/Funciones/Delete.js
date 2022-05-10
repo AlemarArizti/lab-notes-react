@@ -7,7 +7,6 @@
  export const deleteNote = (id) =>{
     Swal.fire({
       title: "Do you want to delete the note?",
-      icon: "warning",
       showCancelButton: true,
       showconfirmButton: true,
       confirmButtonColor: "#0994D5",
